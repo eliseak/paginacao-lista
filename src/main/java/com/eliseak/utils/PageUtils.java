@@ -5,7 +5,6 @@ import java.util.List;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 
-
 public class PageUtils {
 
 	//private static Logger logger = LogManager.getLogger(PageUtils.class);
@@ -26,8 +25,9 @@ public class PageUtils {
 	/**
 	 * Faz a paginacao de uma lista e retorna uma sublista 
 	 * com os itens de uma pagina. 
-	 * O retorno é nulo quando o numero da pagina ultrapassa 
+	 * O retorno e nulo quando o numero da pagina ultrapassa 
 	 * o total de paginas possiveis.
+	 * @param <T> o tipo do item na lista
 	 * 
 	 * @param list a lista que deve ser paginada
 	 * @param page a pagina desejada
@@ -35,8 +35,8 @@ public class PageUtils {
 	 * 
 	 * @return lista com os itens pagina desejada
 	 */
-	public static List<?> getPageContent(
-			List<?> list, Integer page, Integer limit){
+	public static <T> List<T> getPageContent(
+			List<T> list, Integer page, Integer limit){
 
 		if (!isValidPage(list, page, limit)) {
 			return null;
@@ -48,17 +48,15 @@ public class PageUtils {
 		// Variavel que indica o fim da sublista
 		Integer toIndex = fromIndex + limit;
 
-		// Código para evitar NullPointer no método de subList
+		// Codigo para evitar NullPointer no metodo de subList
 		if (page == getTotalPages(list, limit)) {
 			toIndex = fromIndex + getCountLastPageItens(list.size(), limit);
 
 		}
 
-		List<?> subList = list.subList(fromIndex, toIndex);
-
-		return subList;
+		return list.subList(fromIndex, toIndex);
+	
 	}
-
 
 	/**
 	 * Verifica se a pagina requerida e valida
