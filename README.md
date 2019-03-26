@@ -10,6 +10,7 @@ This class has two public methods.
 Description: a static method that gets the number of total pages a list can have  
 
 Parameters list:  
+
 |Parameter |Type      |Optional |Comment                        |
 |----------|----------|---------|-------------------------------|
 |list      |List<?>   |No       |The list to page               |
@@ -24,11 +25,13 @@ Call example:
 Description: a static method that returns the content (sublist) of a specified page  
 
 Type parameters list:  
+
 |Type  |Comment                               |
 |------|--------------------------------------|
 |\<T\> |The type of the item in the list      |
 
 Parameters list:  
+
 |Parameter |Type      |Optional |Comment                               |
 |----------|----------|---------|--------------------------------------|
 |list      |List\<T\> |No       |The list to page                      |
